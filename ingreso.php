@@ -17,6 +17,8 @@ if ($_GET['modificar']) {
     $query = $db->prepare('SELECT * FROM usuario WHERE nombre = ?');
     $query->execute([$_POST['nombre']]);
     $user = $query->fetch(PDO::FETCH_OBJ);
+    echo "<br>";
+    var_dump($user);
 
     if (password_verify($_POST['clave'], ($user->clave))) {
         $_SESSION['usuario'] = $_POST['nombre'];
@@ -26,3 +28,6 @@ if ($_GET['modificar']) {
         echo "<br>Algun dato esta mal. No entro<br>";
 
 }
+
+//SELECT * FROM usuario WHERE nombre = "'.$_POST['nombre'].'"')
+                                    //  = "' x" or "1"="1      " 
